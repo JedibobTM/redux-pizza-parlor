@@ -3,30 +3,39 @@ import logger from 'redux-logger';
 
 // Be sure to replace this reducer! 🙂 state is what this value was before(starts empty)
 const savePizza = (state = [], action) => {
+  // Adding a pizza
   if (action.type === 'ADD_PIZZA') {
-    console.log('expect dummy data (dummyPizza)', action.payload);
     const pizzaToBuy = action.payload
+    
+    // returns the original list of pizzas in our cart, even if its empty, and adds the new
+    // pizza to it for the return.
     return [...state, pizzaToBuy]
   }
+
+  // Removing a pizza
   if(action.type === "REMOVE_PIZZA"){
-    console.log('attempting to remove');
-    console.log("state is", state)
     const indexToRemove = action.payload
-    //filter loops through something (in this case, an object)
-    // it then returns a new object with content with each return
-    // that returns the value of true
+
+    // goes through our current list of pizzas with filter. 
+    // filter will make a new array with content equal to each return of true.
+    // if it is not true, it is not included. 
+
+    // Therefore, if we are deleting, we look for the one instance where index.id would be equal
+    // to our indexToRemove, and return that as false to not include it in our new array.
     return (state.filter((index) =>{
-      console.log("index in state is", index)
       return index.id != indexToRemove
     }))
-    
   }
+
   return state;
 }
 
 const customerData = (state = [], action) => {
+  // Sets our customer info
   if (action.type === 'SET_CUSTOMER') {
     const customerInfo = action.payload
+
+    // Collects the customer info to access it later.
     return customerInfo
   }
   return state
@@ -34,16 +43,20 @@ const customerData = (state = [], action) => {
 
 
 
-
+// Stores all of our pizza information from our server
 const pizzaDatabaseData = (state =[], action) => {
   if (action.type === 'DATABASE_PIZZAS') {
     const pizzaData = action.payload
+
+    // Returns all pizza data
     return pizzaData;
   }
 
   return state;
 }
 
+
+// sets the store so that we can use them all in our app.
 const store = createStore(
   combineReducers({
     savePizza,

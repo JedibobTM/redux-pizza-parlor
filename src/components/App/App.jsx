@@ -1,6 +1,5 @@
 import { HashRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
-import axios from 'axios';
 import Checkout from '../Checkout/Checkout';
 import SelectPizza from '../SelectPizza/SelectPizza';
 import CustomerInfo from '../CustomerInfo/CustomerInfo';

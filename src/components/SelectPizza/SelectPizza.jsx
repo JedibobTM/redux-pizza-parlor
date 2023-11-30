@@ -6,8 +6,13 @@ import PizzaListItem from '../PizzaListItem/PizzaListItem';
 import { Link } from 'react-router-dom/';
 
 export default function SelectPizza() {
+    //useSelector to collect all of our existing pizzas from the database to display
     const pizzaDatabaseData = useSelector(store => store.pizzaDatabaseData) 
+
+    //setting dispatch for actual use
     const dispatch = useDispatch();
+
+    //use effect to render pizzas from the database upon load
     useEffect(() => {
         getPizzas();
     }, [])
