@@ -16,7 +16,7 @@ function App() {
       </header>
   
       <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
+      <p>Pizza is gucci.</p>
   
       <Router>
         <Route path="/select-pizza">
