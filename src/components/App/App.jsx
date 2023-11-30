@@ -16,16 +16,15 @@ function App() {
       </header>
   
       <img src='images/pizza_photo.png' />
-      <p>Pizza is gucci.</p>
   
       <Router>
-        <Route path="/select-pizza">
+        <Route exact path="/">
           <SelectPizza />
         </Route>
-        <Route path="/customer-info">
+        <Route exact path="/customer-info">
           <CustomerInfo />
         </Route>
-        <Route path="/checkout">
+        <Route exact path="/checkout">
           <Checkout />
         </Route>
         <Route exact path="/admin">

@@ -30,13 +30,11 @@ export default function PizzaListItem({pizza}) {
     
 
     return (
-        <div>
+        <div className="pizza-list-item">
             <h5>{pizza.name}</h5>
             <p>{pizza.description}</p>
             <p>£{pizza.price}</p>
-            {!isPizzaAdded ? <button onClick={removedPizza}>remove</button> : <button onClick={addPizzas}>Add</button> }
-          
-
+            {!isPizzaAdded ? <button className="btn" onClick={removedPizza}>Remove from Cart</button> : <button className="btn" onClick={addPizzas}>Add to Cart</button> }
         </div>
     )
 }

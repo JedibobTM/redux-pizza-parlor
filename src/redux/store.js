@@ -22,7 +22,14 @@ const savePizza = (state = [], action) => {
     
   }
   return state;
+}
 
+const customerData = (state = [], action) => {
+  if (action.type === 'SET_CUSTOMER') {
+    const customerInfo = action.payload
+    return customerInfo
+  }
+  return state
 }
 
 
@@ -40,7 +47,8 @@ const pizzaDatabaseData = (state =[], action) => {
 const store = createStore(
   combineReducers({
     savePizza,
-    pizzaDatabaseData 
+    pizzaDatabaseData,
+    customerData 
   }),
   applyMiddleware(logger),
 );

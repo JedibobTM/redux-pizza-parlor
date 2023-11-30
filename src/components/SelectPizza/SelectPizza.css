@@ -1,0 +1,16 @@
+.pizza-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.pizza-list-item {
+    border: solid 2px black;
+    margin: 1rem;
+    height: auto;
+    width: 20rem;
+}
+
+.btn {
+    margin: 1rem;
+}

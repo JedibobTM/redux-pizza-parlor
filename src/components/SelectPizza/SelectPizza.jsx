@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import PizzaListItem from '../PizzaListItem/PizzaListItem';
+import { Link } from 'react-router-dom/';
 
 export default function SelectPizza() {
     const pizzaDatabaseData = useSelector(store => store.pizzaDatabaseData) 
@@ -32,15 +33,20 @@ export default function SelectPizza() {
     }
 
     return (
-        <div>
-            <h1>Select Pizza</h1>
+        <>
+        <h1>Select Pizza</h1>
+        <div className='pizza-list'>
             {pizzaDatabaseData.map((pizza) => {
                 return (
-                    <PizzaListItem pizza={pizza}/>
-                )
-           
-            })}
+                    <PizzaListItem key={pizza.id} pizza={pizza}/>
+                    )
+                    
+                })}
+            <Link to='/customer-info'>
+                <button>NEXT</button>
+            </Link>
            
         </div>
+        </>
     );
 }
