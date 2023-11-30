@@ -1,5 +1,10 @@
+import { HashRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
+import Checkout from '../Checkout/Checkout';
+import SelectPizza from '../SelectPizza/SelectPizza';
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
+import AdminPage from '../Admin/AdminPage';
 import './App.css';
 
 function App() {
@@ -13,6 +18,20 @@ function App() {
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
   
+      <Router>
+        <Route path="/select-pizza">
+          <SelectPizza />
+        </Route>
+        <Route path="/customer-info">
+          <CustomerInfo />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
+        </Route>
+        <Route exact path="/admin">
+          <AdminPage />
+        </Route>
+      </Router>
     </div>
   );
 }
