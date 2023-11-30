@@ -8,8 +8,25 @@ const savePizza = (state = [], action) => {
     const pizzaToBuy = action.payload
     return [...state, pizzaToBuy]
   }
+  if(action.type === "REMOVE_PIZZA"){
+    console.log('attempting to remove');
+    console.log("state is", state)
+    const indexToRemove = action.payload
+    //filter loops through something (in this case, an object)
+    // it then returns a new object with content with each return
+    // that returns the value of true
+    return (state.filter((index) =>{
+      console.log("index in state is", index)
+      return index.id != indexToRemove
+    }))
+    
+  }
   return state;
+
 }
+
+
+
 
 const pizzaDatabaseData = (state =[], action) => {
   if (action.type === 'DATABASE_PIZZAS') {

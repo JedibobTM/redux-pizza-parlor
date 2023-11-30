@@ -1,6 +1,10 @@
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function PizzaListItem({pizza}) {
+    const [isPizzaAdded, setIsPizzaAdded] = useState(true)
+    // We use the useState in order for the DOM and function to be in sync and talk
+
     const dispatch = useDispatch();
     const addPizzas = (e) => {
         // Sends the data to the reducer in store.js (lines 5 - 11)
@@ -11,15 +15,28 @@ export default function PizzaListItem({pizza}) {
             quantity: 1
         }});
         
-
+        setIsPizzaAdded(false);
+        console.log("is pizzas added", isPizzaAdded);
     }
+
+    const removedPizza = () => {
+        console.log('attempting to remove pizza');
+        setIsPizzaAdded(true);
+        dispatch({
+            type: "REMOVE_PIZZA",
+            payload: pizza.id
+        })
+    }
+    
 
     return (
         <div>
             <h5>{pizza.name}</h5>
             <p>{pizza.description}</p>
-            <p>${pizza.price}</p>
-            <button onClick={addPizzas}>Add</button>
+            <p>£{pizza.price}</p>
+            {!isPizzaAdded ? <button onClick={removedPizza}>remove</button> : <button onClick={addPizzas}>Add</button> }
+          
+
         </div>
     )
 }
