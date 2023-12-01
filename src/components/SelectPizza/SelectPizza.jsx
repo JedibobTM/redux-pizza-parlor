@@ -40,6 +40,7 @@ export default function SelectPizza() {
     return (
         <>
         <h1>Select Pizza</h1>
+        <h2>If you have bad eyesight, good luck lol</h2>
         <div className='pizza-list'>
             {pizzaDatabaseData.map((pizza) => {
                 return (

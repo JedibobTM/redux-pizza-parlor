@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import './PizzaListItem.css';
 
 export default function PizzaListItem({pizza}) {
     // We use the useState to set something for our buttons to swap
@@ -41,9 +42,10 @@ export default function PizzaListItem({pizza}) {
 
     return (
         <div className="pizza-list-item">
+            <img src={pizza.image_path} />
             <h5>{pizza.name}</h5>
             <p>{pizza.description}</p>
-            <p>£{pizza.price}</p>
+            <p>${pizza.price}</p>
             {!isPizzaAdded ? <button className="btn" onClick={removedPizza}>Remove from Cart</button> : <button className="btn" onClick={addPizzas}>Add to Cart</button> }
         </div>
     )
