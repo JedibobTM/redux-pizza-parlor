@@ -2,12 +2,15 @@ import { useSelector } from 'react-redux';
 import './Checkout.css';
 import Total from '../Total/Total';
 import axios from 'axios';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch } from 'react-redux';
 export default function Checkout() {
     // Each useSelector takes a function from the store.js file
     const checkoutOrder = useSelector(store => store.savePizza);
     const customerInfo = useSelector(store => store.customerData);
     const collectionOfPizzas = useSelector(store => store.pizzaDatabaseData);
+    const history = useHistory();
+    const dispatch = useDispatch();
     const getTotal = () => {
         let sum = 0;
         for (let index of checkoutOrder) {
@@ -35,6 +38,13 @@ export default function Checkout() {
                 type: customerInfo.type,
                 pizzas: checkoutOrder
             }
+        })
+        .then((res) => {
+            console.log('In our post route, success!!');
+            dispatch({
+                type: "CLEAR_INPUTS"
+            })
+            history.push('/')
         })
     }
 
