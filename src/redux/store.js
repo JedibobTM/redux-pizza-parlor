@@ -26,6 +26,8 @@ const savePizza = (state = [], action) => {
       return index.id != indexToRemove
     }))
   }
+
+  // Clears all the inputs in the state when it gets this request.
   if (action.type === "CLEAR_INPUTS") {
     return []
   }
@@ -41,6 +43,8 @@ const customerData = (state = [], action) => {
     // Collects the customer info to access it later.
     return customerInfo
   }
+  
+  // Clears all the inputs in the state when it gets this request.
   if (action.type === "CLEAR_INPUTS") {
     return []
   }
